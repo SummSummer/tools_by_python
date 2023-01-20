@@ -1,27 +1,28 @@
-# 目标：读取文件内容(json、excel、txt)，转换格式后生成uml.h
+import json
 '''
-    unsigned int ConsoleAdd(int a, int b)
-    [1, 2]
-'''
+功能：读取 func_and_para.json，将格式转化后写入固定格式
 
-'''
-    typedef unsigned int (*ConsoleAddFunc)(int a, int b);
+实例：
+    func_name:int add(int a, int b)
+    func_para:[1, 2]
 
-    ConsoleAddFunc ConsoleAddFuncPtr = (ConsoleAddFunc)testControl->getFunction(aa, bb, "ConsoleAdd");
-    ConsoleAddFuncPtr(1, 2);
+    转换后：
+    typedef int (*addFunc)(int a, int b);
+    addFunc addFuncPtr = (addFunc)testControl->getFunction(, "add");
+    addFuncPtr(1, 2);
 '''
 
 def read_file():
-    with open("a.txt", "r") as f:
-        line = f.readline
-        while(line):
-            pass
-            line = f.readline
-        
+    with open("func_and_para.json", "r", encoding="utf-8") as f:
+        func_arr = json.load(f)
+        pass
         f.close()
 
 def write_file():
-    with open("uml.h", "w+") as f:
+    with open("uml.h", "w+", encoding="utf-8") as f:
         f.write()
 
-        f.close()  
+        f.close()
+
+if __name__ == '__main__':
+    pass
